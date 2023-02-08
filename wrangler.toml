@@ -1,0 +1,11 @@
+name = "parramatta-weather"
+main = "src/index.ts"
+compatibility_date = "2023-02-07"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
+
+[vars]
+VALID_BEARER_TOKEN = "BEARS"
