@@ -1,4 +1,5 @@
 import CheckAuth from "./auth";
+import Options from "./options";
 import GetTemperature from "./temperature";
 import GetWeather from "./weather";
 
@@ -20,7 +21,9 @@ export const responseConfig: ResponseInit = {
 export default {
   // Router
   async fetch(request: Request, env: EnvVars) {
-    
+    if (request.method === 'OPTIONS')
+      return Options(request)
+      
     const authFailure = CheckAuth(request, env)
     if (authFailure) return authFailure
 
