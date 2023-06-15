@@ -7,5 +7,10 @@ env = { }
 [triggers]
 crons = [ ]
 
+[placement]
+mode = "smart"
+
 [vars]
-VALID_BEARER_TOKEN = "BEARS"
+# The necessary secrets are:
+# - VALID_BEARER_TOKEN - the authentication token that gets verified for each request
+# - WW_API_KEY - the Willy Weather API key
