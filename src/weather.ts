@@ -12,7 +12,7 @@ export default async function GetWeather ({ WW_API_KEY }: EnvVars): Promise<Resp
   const [yearString, monthString, dateString] = [
     currentDate.getFullYear().toString(),
     (currentDate.getMonth() + 1).toString().padStart(2, '0'),
-    (currentDate.getDate() + 1).toString().padStart(2, '0')
+    (currentDate.getDate()).toString().padStart(2, '0')
   ]
 
   const currentDateString = `${yearString}-${monthString}-${dateString}`
@@ -41,14 +41,14 @@ export default async function GetWeather ({ WW_API_KEY }: EnvVars): Promise<Resp
               messageId: 'UPSTREAM500',
               message: `UPSTREAM500: ${JSON.stringify(forecastData.error.description)}`,
               explanation: 'The Weather API origin for this resource threw an exception. Please see the message above.',
-              action: "Try fixing up the API key that's used for the weather service, or check that the paths for access haven't changed."
+              action: "Try fixing up the API key that's used for the weather service, check that the paths for access haven't changed, or check the date being looked up."
             }
           ]
         }),
         {
           ...responseConfig,
           status: 500,
-          statusText: 'Upstream access error'
+          statusText: 'Upstream error'
         }
       )
     }
